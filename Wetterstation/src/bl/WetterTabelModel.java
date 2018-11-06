@@ -12,7 +12,7 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author stefan
  */
-public class SenderTabelModel extends AbstractTableModel {
+public class WetterTabelModel extends AbstractTableModel {
 
     private ArrayList <Wetterstation> station = new ArrayList();
     private static String[] colnames = {"Location", "Sea Level" ,"Temperatur", "Humidty"};
@@ -44,7 +44,11 @@ public class SenderTabelModel extends AbstractTableModel {
        this.fireTableRowsInserted(station.size()-1, station.size()-1);
     }       
     
-    
+    public void delete(int t)
+    {
+      station.remove(t);
+     this.fireTableRowsDeleted(station.size(), station.size());
+    }
     
     
 }

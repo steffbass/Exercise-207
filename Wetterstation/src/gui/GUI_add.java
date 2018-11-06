@@ -151,11 +151,12 @@ public class GUI_add extends javax.swing.JDialog {
     private void bt_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_okActionPerformed
         // TODO add your handling code here:
         ok = true;
-        String loc = tf_temp.getText();
+        String loc = tf_loc.getText();
         int sea = Integer.parseInt(tf_sea.getText());
              double temp = Double.parseDouble(tf_temp.getText());
                   int hum = Integer.parseInt(tf_humidity.getText());
             t = new Wetterstation(loc, sea, temp, hum);
+            System.out.println(t);
             this.dispose();
     }//GEN-LAST:event_bt_okActionPerformed
 

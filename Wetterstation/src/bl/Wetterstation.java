@@ -24,7 +24,7 @@ public class Wetterstation {
 
     public String toString()
     {
-    return String.format("Location %s, Sea: %d, Temp: %d , Hum: %d",location,sea,temp,hum);
+    return String.format("Location %s, Sea: %d, Temp: %f , Hum: %d",location,sea,temp,hum);
     }
     
     public String getLocation() {

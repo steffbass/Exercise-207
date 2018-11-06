@@ -5,6 +5,9 @@
  */
 package gui;
 
+import bl.WetterTabelModel;
+import bl.WetterTabelRenderer;
+
 /**
  *
  * @author stefan
@@ -14,8 +17,15 @@ public class Wetterstation_GUI extends javax.swing.JFrame {
     /**
      * Creates new form Wetterstation_GUI
      */
+    
+    private WetterTabelModel bl = new WetterTabelModel();
+            
+ 
+    
     public Wetterstation_GUI() {
         initComponents();
+        table.setDefaultRenderer(Object.class, new WetterTabelRenderer());
+        table.setModel(bl);
     }
 
     /**
@@ -63,9 +73,19 @@ public class Wetterstation_GUI extends javax.swing.JFrame {
         jMenu1.setText("Stations");
 
         add.setText("Add Weather Station");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
         jMenu1.add(add);
 
         remove.setText("Delete Weather station");
+        remove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeActionPerformed(evt);
+            }
+        });
         jMenu1.add(remove);
 
         menubar.add(jMenu1);
@@ -84,6 +104,21 @@ public class Wetterstation_GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        // TODO add your handling code here:
+        GUI_add dia = new GUI_add(this, true);
+        dia.setVisible(true);
+        if(dia.isOk())
+        {
+         bl.add(dia.getT());
+        }
+    }//GEN-LAST:event_addActionPerformed
+
+    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+      int i = table.getSelectedRow();
+      bl.delete(i);
+    }//GEN-LAST:event_removeActionPerformed
 
     /**
      * @param args the command line arguments
