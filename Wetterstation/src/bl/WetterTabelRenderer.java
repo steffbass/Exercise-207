@@ -5,7 +5,9 @@
  */
 package bl;
 
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
@@ -31,6 +33,19 @@ public class WetterTabelRenderer implements TableCellRenderer{
             case 2: label.setText(t.getTemp()+""); break;
             case 3: label.setText(t.getHum()+""); break; 
         }
+        
+          label.setFont(new Font("Arial", Font.ITALIC, 14));
+        if(isSelected){
+            label.setForeground(Color.WHITE);
+            label.setBackground(Color.LIGHT_GRAY);
+        }
+       if(t.getTemp() > 25 && t.getHum() > 20)
+       {
+       label.setBackground(Color.YELLOW);
+       }
+            else label.setBackground(Color.white);
+         
+        
         
         return label;
     }
